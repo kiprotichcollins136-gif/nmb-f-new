@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoanApplicationProvider } from './LoanApplicationContext';
 import LoanCalculator from './pages/LoanCalculator.jsx';
-import LoanApplication from './pages/LoanApplication.jsx';
 import Details from './pages/Details.jsx';
 import Summary from './pages/Summary.jsx';
 import Login from './pages/Login.jsx';
@@ -12,17 +11,16 @@ function App() {
     <LoanApplicationProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<LoanCalculator />} />
-          <Route path="/check-rate" element={<LoanCalculator />} />
-          <Route path="/loan-application" element={<LoanApplication />}/>
-          <Route path="/details" element={<Details />} />
-          <Route path="/summary" element={<Summary />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/status" element={<Status />} />
+          <Route path="/:userId"            element={<LoanCalculator />} />
+          <Route path="/:userId/check-rate" element={<LoanCalculator />} />
+          <Route path="/:userId/details"    element={<Details />} />
+          <Route path="/:userId/summary"    element={<Summary />} />
+          <Route path="/:userId/login"      element={<Login />} />
+          <Route path="/:userId/status"     element={<Status />} />
+          <Route path="*"                   element={<LoanCalculator />} />
         </Routes>
       </Router>
     </LoanApplicationProvider>
   );
 }
-
 export default App;
